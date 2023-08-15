@@ -2,7 +2,6 @@ import 'package:h_mart/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class CustomTextField13 extends StatelessWidget {
   final String? title;
   final TextEditingController? controller;
@@ -99,10 +98,16 @@ class CustomTextField13 extends StatelessWidget {
           ),
           decoration: InputDecoration(
             prefixIcon: prefixIcon,
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(
+                style: BorderStyle.none,
+                width: 0,
+              ),
+            ),
             border: UnderlineInputBorder(
                 borderSide: const BorderSide(
-                  color: redColor,
-                  width: 2,
+                  style: BorderStyle.none,
+                  width: 0,
                 ),
                 borderRadius: BorderRadius.circular(8)),
             hintText: hintText,

@@ -5,3 +5,10 @@ List socialIconList=[
   icGoogleLogo,
   icTwitterLogo
 ];
+
+List slidersList=[
+  imgSlider1,
+  imgSlider2,
+  imgSlider3,
+  imgSlider4
+];

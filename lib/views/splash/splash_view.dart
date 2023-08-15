@@ -1,4 +1,4 @@
-import 'package:h_mart/common_widgets/applogo.dart';
+import 'package:h_mart/widgets/applogo.dart';
 import 'package:h_mart/consts/consts.dart';
 
 import 'package:flutter/material.dart';

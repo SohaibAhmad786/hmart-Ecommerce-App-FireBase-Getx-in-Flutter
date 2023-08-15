@@ -9,7 +9,7 @@ class SplashViewModel extends GetxController {
     Timer(
       const Duration(seconds: 3),
       () {
-        Get.to( ()=> const LoginView());
+        Get.to( ()=> LoginView());
       },
     );
   }
