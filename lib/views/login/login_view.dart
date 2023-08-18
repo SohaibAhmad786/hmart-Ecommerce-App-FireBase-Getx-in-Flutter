@@ -46,7 +46,7 @@ class LoginView extends StatelessWidget {
               )
                   .box
                   .rounded
-                  .width(context.screenWidth - 70)
+                  .width(context.screenWidth - 50)
                   .white
                   .padding(const EdgeInsets.all(20))
                   .make(),
