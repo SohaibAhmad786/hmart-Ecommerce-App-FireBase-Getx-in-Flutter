@@ -43,3 +43,27 @@ List txtLowerList=[
   "Mobile Phone",
   "T Shirts",
 ];
+
+List categoriesImgList=[
+  imgFc1,
+  imgFc2,
+  imgFc3,
+  imgFc4,
+  imgFc5,
+  imgFc6,
+  imgFc7,
+  imgFc8,
+  imgFc9,
+];
+
+List categoriesTxtList=[
+  "Men Clothing",
+  "Laptop",
+  "Autombile",
+  "Kid Toys",
+  "Sports",
+  "cellphone",
+  "jewelery",
+  "funiture",
+  "funiture",
+];
