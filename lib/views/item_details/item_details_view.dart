@@ -201,6 +201,7 @@ class ItemDetailsView extends StatelessWidget {
                     },
                     child: ListView(
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       children: List.generate(
                         itemDetailsTxtList.length,
                         (index) => ListTile(
