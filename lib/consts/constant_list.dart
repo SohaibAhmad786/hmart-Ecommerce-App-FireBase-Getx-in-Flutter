@@ -67,3 +67,11 @@ List categoriesTxtList=[
   "funiture",
   "funiture",
 ];
+
+List itemDetailsTxtList=[
+  "Video",
+  "Reviews",
+  "Seller Policy",
+  "Return Policy",
+  "Support Policy",
+];

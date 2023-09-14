@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:h_mart/views/splash/splash_view.dart';
 import 'consts/consts.dart';
@@ -14,14 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: appname,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'sans_regular',
-        scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
-      ),
-      home: SplashView()
-    );
+        title: appname,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'sans_regular',
+          scaffoldBackgroundColor: Colors.transparent,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.transparent,
+            iconTheme: IconThemeData(
+              color: darkFontGrey
+            )
+          ),
+        ),
+        home: SplashView());
   }
 }

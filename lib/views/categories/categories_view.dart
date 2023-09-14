@@ -33,22 +33,31 @@ class CategoriesView extends StatelessWidget {
             return Material(
               elevation: 3,
               borderRadius: BorderRadius.circular(15),
-              child: Column(
-                children: [
-                  Image.asset(
-                    categoriesImgList[index],
-                    height: 120,
-                    width: 200,
-                    fit: BoxFit.cover,
-                  ),
-                  10.heightBox,
-                  "${categoriesTxtList[index]}"
-                      .text
-                      .color(darkFontGrey)
-                      .align(TextAlign.center)
-                      .make()
-                ],
-              ).box.clip(Clip.antiAlias).outerShadowSm.white.roundedSM.make(),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => CategoriesDetailsView(
+                      title: categoriesTxtList[index],
+                    ),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Image.asset(
+                      categoriesImgList[index],
+                      height: 120,
+                      width: 200,
+                      fit: BoxFit.cover,
+                    ),
+                    10.heightBox,
+                    "${categoriesTxtList[index]}"
+                        .text
+                        .color(darkFontGrey)
+                        .align(TextAlign.center)
+                        .make()
+                  ],
+                ).box.clip(Clip.antiAlias).outerShadowSm.white.roundedSM.make(),
+              ),
             );
           },
         ),
