@@ -21,11 +21,23 @@ class ProfileView extends StatelessWidget {
               20.heightBox,
               Row(
                 children: [
-                  Image.asset(
-                    imgProfile2,
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ).box.roundedFull.clip(Clip.antiAlias).make(),
+                  Obx(
+                    () => viewModel.profileModel.value.image == null
+                        ? Image.asset(
+                            imgProfile2,
+                            width: 100,
+                            fit: BoxFit.cover,
+                          ).box.roundedFull.clip(Clip.antiAlias).make()
+                        : CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 50,
+                            child: Image.network(
+                              viewModel.profileModel.value.image!,
+                              width: 100,
+                              fit: BoxFit.cover,
+                            ).box.roundedFull.clip(Clip.antiAlias).make(),
+                          ),
+                  ),
                   10.widthBox,
                   Expanded(
                     child: Column(

@@ -7,6 +7,7 @@ import 'package:h_mart/views/edit_profile/edit_profile_viewmodel.dart';
 import 'package:h_mart/widgets/background.dart';
 import 'package:h_mart/widgets/custom_buttons.dart';
 import 'package:h_mart/widgets/custom_textfields.dart';
+import 'package:h_mart/widgets/loader_view.dart';
 
 class EditProfileView extends StatelessWidget {
   EditProfileView({super.key});
@@ -15,55 +16,73 @@ class EditProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return backgroundWidget(
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(height: 80, width: double.infinity),
-              Obx(
-                () => Column(
-                  children: [
-                    viewModel.userImage.value.path.isEmpty
-                        ? CircleAvatar(
-                            backgroundColor: Colors.grey.shade400,
-                            radius: 45,
-                            child: const Icon(
-                              Icons.person,
-                              size: 50,
-                            ),
-                          )
-                        : Image.file(
-                            File(viewModel.userImage.value.path),
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ).box.roundedFull.clip(Clip.antiAlias).make(),
-                    10.heightBox,
-                    SizedBox(width: 100, child: changeBtn()),
-                    Form(
-                      key: viewModel.editKey,
-                      child: Column(
-                        children: [
-                          nameTxtField(),
-                          passwordTxtField(),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    saveBtn(),
-                  ],
-                )
-                    .box
-                    .rounded
-                    .width(context.screenWidth - 50)
-                    .white
-                    .padding(const EdgeInsets.all(20))
-                    .make(),
-              ),
-            ],
-          ).scrollVertical(),
+    return Stack(
+      children: [
+        backgroundWidget(
+          child: Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(height: 80, width: double.infinity),
+                  Obx(
+                    () => Column(
+                      children: [
+                        viewModel.profileModel.value.image == null
+                            ? CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                radius: 45,
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 50,
+                                ),
+                              )
+                            : viewModel.userImage.value.path.isNotEmpty
+                                ? Image.file(
+                                    File(viewModel.userImage.value.path),
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  ).box.roundedFull.clip(Clip.antiAlias).make()
+                                : CircleAvatar(
+                                    radius: 50,
+                                    child: Image.network(
+                                      viewModel.profileModel.value.image!,
+                                      width: 100,
+                                      fit: BoxFit.cover,
+                                    )
+                                        .box
+                                        .roundedFull
+                                        .clip(Clip.antiAlias)
+                                        .make(),
+                                  ),
+                        10.heightBox,
+                        SizedBox(width: 100, child: changeBtn()),
+                        Form(
+                          key: viewModel.editKey,
+                          child: Column(
+                            children: [
+                              nameTxtField(),
+                              passwordTxtField(),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        saveBtn(),
+                      ],
+                    )
+                        .box
+                        .rounded
+                        .width(context.screenWidth - 50)
+                        .white
+                        .padding(const EdgeInsets.all(20))
+                        .make(),
+                  ),
+                ],
+              ).scrollVertical(),
+            ),
+          ),
         ),
-      ),
+        const LoaderView(),
+      ],
     );
   }
 
@@ -71,8 +90,8 @@ class EditProfileView extends StatelessWidget {
     return CustomElevatedBtn(
       height: 40,
       width: double.infinity,
-      onPressed: () {
-        viewModel.changeImgBtn();
+      onPressed: () async {
+        await viewModel.changeImgBtn();
       },
       backgroundColor: redColor,
       child: "Change".text.color(whiteColor).make(),
@@ -106,8 +125,8 @@ class EditProfileView extends StatelessWidget {
     return CustomElevatedBtn(
       height: 40,
       width: double.infinity,
-      onPressed: () {
-        viewModel.saveBtn();
+      onPressed: () async {
+        await viewModel.saveBtn();
       },
       backgroundColor: redColor,
       child: "Save".text.color(whiteColor).make(),

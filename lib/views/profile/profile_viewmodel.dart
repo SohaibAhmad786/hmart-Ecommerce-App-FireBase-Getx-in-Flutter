@@ -37,6 +37,6 @@ class ProfileViewModel extends GetxController {
   }
 
   editBtn() {
-    Get.to(() => EditProfileView());
+    Get.to(() => EditProfileView(), arguments: {'data': profileModel.value});
   }
 }
