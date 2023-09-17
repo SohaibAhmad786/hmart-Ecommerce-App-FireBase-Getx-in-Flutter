@@ -8,6 +8,7 @@ import 'package:h_mart/widgets/custom_textfields.dart';
 import 'package:h_mart/consts/consts.dart';
 
 import 'package:flutter/material.dart';
+import 'package:h_mart/widgets/loader_view.dart';
 
 class SignUpView extends StatelessWidget {
   SignUpView({super.key});
@@ -16,43 +17,48 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return backgroundWidget(
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 80, width: double.infinity),
-              appLogo(),
-              joinThehMartTxtField(),
-              Column(
+    return Stack(
+      children: [
+        backgroundWidget(
+          child: Scaffold(
+            body: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Form(
-                    key: viewModel.signupKey,
-                    child: Column(
-                      children: [
-                        nameTxtField(),
-                        emailTxtField(),
-                        paswordTxtField(),
-                        reTypePasswordTxtField(),
-                      ],
-                    ),
-                  ),
-                  termsAndConditionCheckBox(),
-                  signUpBtn(),
-                  alreadyHaveAnAccTxt(),
+                  const SizedBox(height: 80, width: double.infinity),
+                  appLogo(),
+                  joinThehMartTxtField(),
+                  Column(
+                    children: [
+                      Form(
+                        key: viewModel.signupKey,
+                        child: Column(
+                          children: [
+                            nameTxtField(),
+                            emailTxtField(),
+                            paswordTxtField(),
+                            reTypePasswordTxtField(),
+                          ],
+                        ),
+                      ),
+                      termsAndConditionCheckBox(),
+                      signUpBtn(),
+                      alreadyHaveAnAccTxt(),
+                    ],
+                  )
+                      .box
+                      .rounded
+                      .width(context.screenWidth - 70)
+                      .white
+                      .padding(const EdgeInsets.all(20))
+                      .make(),
                 ],
-              )
-                  .box
-                  .rounded
-                  .width(context.screenWidth - 70)
-                  .white
-                  .padding(const EdgeInsets.all(20))
-                  .make(),
-            ],
-          ).scrollVertical(),
+              ).scrollVertical(),
+            ),
+          ),
         ),
-      ),
+        const LoaderView(),
+      ],
     );
   }
 

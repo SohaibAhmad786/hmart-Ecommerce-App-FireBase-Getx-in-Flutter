@@ -8,6 +8,7 @@ import 'package:h_mart/consts/consts.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:h_mart/consts/constant_list.dart';
+import 'package:h_mart/widgets/loader_view.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -16,44 +17,49 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return backgroundWidget(
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 80, width: double.infinity),
-              appLogo(),
-              loginToHmartTxt(),
-              Column(
+    return Stack(
+      children: [
+        backgroundWidget(
+          child: Scaffold(
+            body: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Form(
-                    key: viewModel.loginKey,
-                    child: Column(
-                      children: [
-                        emailTxtField(),
-                        passwordTxtField(),
-                      ],
-                    ),
-                  ),
-                  forgetPasswordTxt(),
-                  loginBtn(),
-                  orCreateTxt(),
-                  signUpBtn(),
-                  loginWithTxt(),
-                  socialIconsList()
+                  const SizedBox(height: 80, width: double.infinity),
+                  appLogo(),
+                  loginToHmartTxt(),
+                  Column(
+                    children: [
+                      Form(
+                        key: viewModel.loginKey,
+                        child: Column(
+                          children: [
+                            emailTxtField(),
+                            passwordTxtField(),
+                          ],
+                        ),
+                      ),
+                      forgetPasswordTxt(),
+                      loginBtn(),
+                      orCreateTxt(),
+                      signUpBtn(),
+                      loginWithTxt(),
+                      socialIconsList()
+                    ],
+                  )
+                      .box
+                      .rounded
+                      .width(context.screenWidth - 50)
+                      .white
+                      .padding(const EdgeInsets.all(20))
+                      .make(),
                 ],
-              )
-                  .box
-                  .rounded
-                  .width(context.screenWidth - 50)
-                  .white
-                  .padding(const EdgeInsets.all(20))
-                  .make(),
-            ],
-          ).scrollVertical(),
+              ).scrollVertical(),
+            ),
+          ),
         ),
-      ),
+        const LoaderView(),
+      ],
     );
   }
 

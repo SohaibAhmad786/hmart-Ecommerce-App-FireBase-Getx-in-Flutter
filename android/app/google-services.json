@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "711810787659",
+    "project_id": "hmart-fc31e",
+    "storage_bucket": "hmart-fc31e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711810787659:android:34d547e6f9b888523720ce",
+        "android_client_info": {
+          "package_name": "com.example.h_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf40mgaAaKTPtEvLkLxJwDei23eQ2ISCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

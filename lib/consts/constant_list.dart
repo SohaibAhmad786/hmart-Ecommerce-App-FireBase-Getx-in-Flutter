@@ -75,3 +75,15 @@ List itemDetailsTxtList=[
   "Return Policy",
   "Support Policy",
 ];
+
+List profileBtnTxtList=[
+  "My Orders",
+  "My Wishlist",
+  "Messages",
+];
+
+List profileBtnIconsList=[
+  icOrders,
+  icHeart,
+  icMessages,
+];
